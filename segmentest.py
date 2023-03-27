@@ -75,11 +75,11 @@ def icmp(scope):
     
    
 def main():
-	args = parse_args()
-	scope = args.scope
-  icmp(scope)
-  tcp(scope)
+    args = parse_args()
+    scope = args.scope
+    icmp(scope)
+    tcp(scope)
   
   
 if __name__ == '__main__':
-	main()
+    main()
