@@ -28,7 +28,7 @@ def tcp(scope):
     for subnet in subnets:
         print(f"Scanning subnet {subnet}...")
         print("nmap -Pn -sS --open {subnet}")
-        result = subprocess.check_output(["nmap", "-Pn", "-sS", "--open", subnet], text=True)
+        result = subprocess.check_output(["nmap", "-Pn", "-sS", "--open", "-oA", "tcp-outPut", subnet], text=True)
 
         # Check if any open ports were found
         if "open" in result:
@@ -58,7 +58,7 @@ def icmp(scope):
     for subnet in subnets:
         print(f"Scanning subnet {subnet}...")
         print("nmap -sn {subnet}")
-        result = subprocess.check_output(["nmap", "-sn", subnet], text=True)
+        result = subprocess.check_output(["nmap", "-sn", "-oA", "icmp_output", subnet], text=True)
 
         # Check if any open ports were found
         if "Nmap scan report for" in result:
