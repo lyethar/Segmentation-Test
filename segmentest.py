@@ -87,7 +87,7 @@ def udp(scope):
     for subnet in subnets:
         print(f"Scanning subnet {subnet}...")
         print("nmap -Pn -sU --max-retries 3 --open {subnet}")
-        result = subprocess.check_output(["nmap", "-Pn", "-sU", "--open", "--max-retries", 3 , "-oA", "tcp_out", subnet], text=True)
+        result = subprocess.check_output(["nmap", "-Pn", "-sU", "--open", "--max-retries", 3 , "-oA", "udp_out", subnet], text=True)
         print(result)
         # Check if any open ports were found
         if "open" in result:
