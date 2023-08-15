@@ -27,8 +27,8 @@ def tcp(scope):
     # Perform the Nmap scan on each subnet
     for subnet in subnets:
         print(f"Scanning subnet {subnet}...")
-        print("nmap -Pn -sS --open {subnet}")
-        result = subprocess.check_output(["nmap", "-Pn", "-sS", "--open", "-oA", "tcp_out", subnet], text=True)
+        print("nmap -Pn -sS -p- -T4 --max-retries 3 --open {subnet}")
+        result = subprocess.check_output(["nmap", "-Pn", "-sS", "-p-", "-T4","--max-retries", "3", "--open", "-oA", "tcp_out", subnet], text=True)
         print(result)
         # Check if any open ports were found
         if "open" in result:
@@ -86,8 +86,8 @@ def udp(scope):
     # Perform the Nmap scan on each subnet
     for subnet in subnets:
         print(f"Scanning subnet {subnet}...")
-        print("nmap -Pn -sU --max-retries 3 --open {subnet}")
-        result = subprocess.check_output(["nmap", "-Pn", "-sU", "--open", "--max-retries", "3" , "-oA", "udp_out", subnet], text=True)
+        print("nmap -Pn -sU -p- -T4 --max-retries 3 --open {subnet}")
+        result = subprocess.check_output(["nmap", "-Pn", "-sU", "--open", "--max-retries", "3" , "-T4", "-p-", "-oA", "udp_out", subnet], text=True)
         print(result)
         # Check if any open ports were found
         if "open" in result:
